@@ -15,4 +15,9 @@ class ContactRepository
     {
         return Contact::count();
     }
+
+    public function countToday(): int
+    {
+        return Contact::whereDate('created_at', today())->count();
+    }
 }
