@@ -10,4 +10,9 @@ class ContactRepository
     {
         return Contact::create($data);
     }
+
+    public function count(): int
+    {
+        return Contact::count();
+    }
 }
