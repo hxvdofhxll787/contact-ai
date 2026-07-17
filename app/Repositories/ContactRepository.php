@@ -20,4 +20,9 @@ class ContactRepository
     {
         return Contact::whereDate('created_at', today())->count();
     }
+
+    public function countSentiment(string $sentiment): int
+    {
+        return Contact::where('sentiment', $sentiment)->count();
+    }
 }
