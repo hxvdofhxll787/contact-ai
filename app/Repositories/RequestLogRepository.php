@@ -10,4 +10,9 @@ class RequestLogRepository
     {
         return RequestLog::create($data);
     }
+
+    public function count(): int
+    {
+        return RequestLog::count();
+    }
 }
