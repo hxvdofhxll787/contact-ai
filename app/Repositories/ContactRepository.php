@@ -25,4 +25,9 @@ class ContactRepository
     {
         return Contact::where('sentiment', $sentiment)->count();
     }
+
+    public function countCategory(string $category): int
+    {
+        return Contact::where('category', $category)->count();
+    }
 }
