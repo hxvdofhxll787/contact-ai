@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('request_logs', function (Blueprint $table) {
             $table->id();
+
+            $table->ipAddress('ip')->nullable();
+
+            $table->string('method');
+            $table->string('url');
+
+            $table->unsignedSmallInteger('status_code');
+
+            $table->json('request')->nullable();
+            $table->json('response')->nullable();
+
+            $table->unsignedInteger('duration_ms')->nullable();
+
             $table->timestamps();
         });
     }
