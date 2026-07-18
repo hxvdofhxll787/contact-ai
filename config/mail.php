@@ -97,6 +97,8 @@ return [
             'retry_after' => 60,
         ],
 
+        'owner_address' => env('MAIL_OWNER_ADDRESS'),
+
     ],
 
     /*
