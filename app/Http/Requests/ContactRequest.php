@@ -36,7 +36,7 @@ class ContactRequest extends FormRequest
             'phone' => [
                 'required',
                 'string',
-                'regex:^((\+7|7|8)+([0-9]){10})$',
+                'regex:/^((\+7|7|8)+([0-9]){10})$/',
             ],
             'comment' => [
                 'required',
