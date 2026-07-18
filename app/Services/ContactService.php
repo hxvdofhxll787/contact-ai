@@ -9,6 +9,7 @@ class ContactService
     public function __construct(
         private ContactRepository $contactRepository,
         private AIService $aiService,
+        private MailService $mailService,
     ) {}
 
     public function create(array $data)
@@ -17,7 +18,13 @@ class ContactService
 
         $contact = $this->contactRepository->create([
             ...$data,
+
+            'sentiment' => $analysis['sentiment'],
+            'category' => $analysis['category'],
         ]);
+
+        $this->mailService->sendOwnerNotification($contact);
+        $this->mailService->sendUserConfirmation($contact);
 
         return $contact;
     }
