@@ -23,30 +23,17 @@ class ContactConfirmation extends Mailable
         public Contact $contact,
     ) {}
 
-    public function build()
-    {
-        return $this
-            ->subject('Благодарим вас за то, что обратились к нам.')
-            ->view('emails.contact-confirmation');
-    }
-
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Confirmation',
+            subject: 'Благодарим вас за то, что обратились к нам.',
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.contact-confirmation',
         );
     }
 
