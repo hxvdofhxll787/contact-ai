@@ -23,30 +23,17 @@ class ContactNotification extends Mailable
         public Contact $contact,
     ) {}
 
-    public function build()
-    {
-        return $this
-            ->subject('Новое письмо.')
-            ->view('emails.contact-notification');
-    }
-
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Notification',
+            subject: 'Новое письмо.',
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.contact-notification',
         );
     }
 
