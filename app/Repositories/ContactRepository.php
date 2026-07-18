@@ -21,13 +21,21 @@ class ContactRepository
         return Contact::whereDate('created_at', today())->count();
     }
 
-    public function countSentiment(string $sentiment): int
+    public function countSentiment(): array
     {
-        return Contact::where('sentiment', $sentiment)->count();
+        return Contact::query()
+            ->selectRaw('sentiment, COUNT(*) as total')
+            ->groupBy('sentiment')
+            ->pluck('total', 'sentiment')
+            ->toArray();
     }
 
-    public function countCategory(string $category): int
+    public function countCategory(): array
     {
-        return Contact::where('category', $category)->count();
+        return Contact::query()
+            ->selectRaw('category, COUNT(*) as total')
+            ->groupBy('category')
+            ->pluck('total', 'category')
+            ->toArray();
     }
 }
