@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Mail\ContactConfirmation;
+use App\Mail\ContactNotification;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Mail;
 
@@ -10,11 +12,12 @@ class MailService
     public function sendOwnerNotification(Contact $contact): void
     {
         Mail::to(config('mail.owner_address'))
-            ->send();
+            ->send(new ContactNotification($contact));
     }
 
-    public function sendUserCinfirmation(Contact $contact): void
+    public function sendUserConfirmation(Contact $contact): void
     {
-        Mail::to(config($contact->email))->send();
+        Mail::to(config($contact->email))
+            ->send(new ContactConfirmation($contact));
     }
 }
