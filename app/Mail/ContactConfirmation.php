@@ -10,6 +10,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
+use App\Models\Contact;
+
 class ContactConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
@@ -17,9 +19,15 @@ class ContactConfirmation extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(
+        public Contact $contact,
+    ) {}
+
+    public function build()
     {
-        //
+        return $this
+            ->subject('Благодарим вас за то, что обратились к нам.')
+            ->view('emails.contact-confirmation');
     }
 
     /**
