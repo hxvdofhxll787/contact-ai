@@ -16,7 +16,7 @@ class RequestLogRepository
         return RequestLog::count();
     }
 
-    public function countStatus(): int
+    public function countFailed(): int
     {
         return RequestLog::where('status_code', '>=', 400)->count();
     }
