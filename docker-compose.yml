@@ -1,0 +1,12 @@
+services:
+    app:
+        build:
+            context: .
+        container_name: contact-api
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/var/www
+        environment:
+            APP_ENV: local
+            APP_DEBUG: true
