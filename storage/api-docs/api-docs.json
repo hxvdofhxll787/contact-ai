@@ -1,0 +1,177 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Contact API",
+        "description": "API for developer landing page contact form",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local server"
+        }
+    ],
+    "paths": {
+        "/api/contact": {
+            "post": {
+                "tags": [
+                    "Contact"
+                ],
+                "summary": "Отправить комментарий",
+                "operationId": "091364660aac946c17e7253400cb3f89",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "phone",
+                                    "comment"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Александр"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "alex@example.com"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+79999999999"
+                                    },
+                                    "comment": {
+                                        "type": "string",
+                                        "example": "Я хочу создать веб-сайт"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Contact request created"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "429": {
+                        "description": "Too many requests"
+                    }
+                }
+            }
+        },
+        "/api/health": {
+            "get": {
+                "tags": [
+                    "Health"
+                ],
+                "summary": "Проверить статус сервиса",
+                "operationId": "86f59596b50693fd899d11bc931d8060",
+                "responses": {
+                    "200": {
+                        "description": "Service is running",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "ok"
+                                        },
+                                        "timestamp": {
+                                            "type": "string",
+                                            "example": "2026-07-18T12:00:00Z"
+                                        },
+                                        "app": {
+                                            "type": "string",
+                                            "example": "Contact AI"
+                                        },
+                                        "version": {
+                                            "type": "string",
+                                            "example": "1.0.0"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/metrics": {
+            "get": {
+                "tags": [
+                    "Metrics"
+                ],
+                "summary": "Получить метрики",
+                "operationId": "36a519976eae852746970b0e72fe26b1",
+                "responses": {
+                    "200": {
+                        "description": "Application statistics",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "contacts": {
+                                            "type": "object",
+                                            "example": {
+                                                "total": 25,
+                                                "today": 3
+                                            }
+                                        },
+                                        "requests": {
+                                            "type": "object",
+                                            "example": {
+                                                "total": 100,
+                                                "failed": 5
+                                            }
+                                        },
+                                        "sentiments": {
+                                            "type": "object",
+                                            "example": {
+                                                "positive": 10,
+                                                "neutral": 8,
+                                                "negative": 2
+                                            }
+                                        },
+                                        "categories": {
+                                            "type": "object",
+                                            "example": {
+                                                "question": 5,
+                                                "feedback": 3,
+                                                "complaint": 1,
+                                                "partnership": 4
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Contact",
+            "description": "Contact"
+        },
+        {
+            "name": "Health",
+            "description": "Health"
+        },
+        {
+            "name": "Metrics",
+            "description": "Metrics"
+        }
+    ]
+}
