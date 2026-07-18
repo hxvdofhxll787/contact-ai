@@ -19,7 +19,12 @@ class RequestLogger
 
         $response = $next($request);
 
-        $this->requestLogService->log($request, $response, $startedAt);
+        if (!in_array($request->path(), [
+            'api/health',
+            'api/metrics',
+        ])) {
+            $this->requestLogService->log($request, $response, $startedAt);
+        }
 
         return $response;
     }
