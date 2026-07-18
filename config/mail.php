@@ -97,8 +97,6 @@ return [
             'retry_after' => 60,
         ],
 
-        'owner_address' => env('MAIL_OWNER_ADDRESS'),
-
     ],
 
     /*
@@ -116,5 +114,7 @@ return [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
+
+    'owner_address' => env('MAIL_OWNER_ADDRESS'),
 
 ];

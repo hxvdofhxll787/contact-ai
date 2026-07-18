@@ -17,7 +17,7 @@ class MailService
 
     public function sendUserConfirmation(Contact $contact): void
     {
-        Mail::to(config($contact->email))
+        Mail::to($contact->email)
             ->send(new ContactConfirmation($contact));
     }
 }
