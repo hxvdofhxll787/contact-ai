@@ -16,25 +16,16 @@ class ContactController extends Controller
 
     public function store(ContactRequest $request): JsonResponse
     {
-        try {
-            $contact = $this->contactService->create($request->validated());
+        $contact = $this->contactService->create($request->validated());
 
-            return response()->json([
-                'success' => true,
-                'message' => 'Contact successfully created.',
-                'data' => [
-                    'id' => $contact->id,
-                    'sentiment' => $contact->sentiment,
-                    'category' => $contact->category,
-                ]
-            ], 201);
-        } catch (\Throwable $e) {
-            report($e);
-
-            return response()->json([
-                'success' => false,
-                'message' => 'Internal server error.',
-            ], 500);
-        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Contact successfully created.',
+            'data' => [
+                'id' => $contact->id,
+                'sentiment' => $contact->sentiment,
+                'category' => $contact->category,
+            ]
+        ], 201);
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Services;
 
 use App\Repositories\ContactRepository;
+use App\Repositories\RequestLogRepository;
 
 class ContactService
 {
     public function __construct(
         private ContactRepository $contactRepository,
+        private RequestLogRepository $requestLogRepository,
         private AIService $aiService,
         private MailService $mailService,
     ) {}
@@ -22,6 +24,8 @@ class ContactService
             'sentiment' => $analysis['sentiment'],
             'category' => $analysis['category'],
         ]);
+
+
 
         $this->mailService->sendOwnerNotification($contact);
         $this->mailService->sendUserConfirmation($contact);
