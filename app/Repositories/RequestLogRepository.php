@@ -16,8 +16,8 @@ class RequestLogRepository
         return RequestLog::count();
     }
 
-    public function countStatus(int $status): int
+    public function countStatus(): int
     {
-        return RequestLog::where('status_code', $status)->count();
+        return RequestLog::where('status_code', '>=', 400)->count();
     }
 }
