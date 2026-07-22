@@ -89,7 +89,7 @@ MAIL_USERNAME=your_username
 MAIL_PASSWORD=your_password
 MAIL_ENCRYPTION=tls
 
-MAIL_FROM_NAME="Contact API"
+MAIL_FROM_NAME="Contact AI"
 MAIL_OWNER_ADDRESS=owner@example.com
 
 GEMINI_API_KEY=your_api_key
@@ -330,7 +330,7 @@ AI-инструменты использовались для:
 - подготовки документации;
 - работа с Google Gemini API;
 - поиска возможных улучшений кода.
-Все сгенерированные части были проверены и адаптированы вручную.\
+Все сгенерированные части были проверены и адаптированы вручную.
 ## 7. Хранение данных
 Используется SQLite.
 ### Логи
